@@ -1,0 +1,9 @@
+[Event "Deep Blue vs Garry Kasparov"]
+[Site "New York (Rematch, Game 6)"]
+[Date "1997.05.11"]
+[Round "-"]
+[White "Deep Blue"]
+[Black "Kasparov"]
+[Result "1-0"]
+
+1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nd7 {The Caro-Kann with an unusual knight move.} 5. Ng5! {Preparing the thematic knight sacrifice.} 5... Ngf6 6. Bd3 e6 7. N1f3 h6? {Kasparov, in a known theoretical trap, plays a mistaken move order.} 8. Nxe6! {The knight sacrifice that destroys Black's position.} 8... Qe7 9. O-O fxe6 10. Bg6+ Kd8 11. Bf4 b5 12. a4 Bb7 13. Re1 Nd5 14. Bg3 Kc8 15. axb5 cxb5 16. Qd3 Bc6 17. Bf5 exf5 18. Rxe7 Bxe7 19. c4 {The first time a computer beat a reigning world champion in a match.} 1-0

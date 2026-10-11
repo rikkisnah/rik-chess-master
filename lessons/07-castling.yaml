@@ -1,0 +1,22 @@
+id: castling
+group: Special rules
+title: Castling
+steps:
+- type: explain
+  text: Castling moves the king two squares toward a rook and puts that rook on the other side. It is
+    allowed only if neither piece has moved, the squares between are empty, and the king is not in, through
+    or into check.
+- type: move
+  fen: r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1
+  prompt: 'Castle kingside: move the king two squares toward the h-rook.'
+  accept:
+  - e1g1
+  why: The king is on g1 and the rook jumped to f1.
+  hint: Move the king from e1 to g1.
+- type: move
+  fen: r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1
+  prompt: 'Now castle queenside: king two squares toward the a-rook.'
+  accept:
+  - e1c1
+  why: Queenside castling puts the king on c1 and the rook on d1.
+  hint: Move the king from e1 to c1.

@@ -1,0 +1,19 @@
+id: queen
+group: Piece basics
+title: The Queen
+steps:
+- type: explain
+  text: 'The queen combines the rook and the bishop: any number of squares along ranks, files or diagonals.
+    She is the most powerful piece.'
+- type: practice
+  fen: 4k3/8/8/8/3Q4/8/8/4K3 w - - 0 1
+  prompt: Move the queen. Do this 3 times.
+  piece: queen
+  count: 3
+- type: move
+  fen: 4k3/8/8/8/Q6r/8/8/4K3 w - - 0 1
+  prompt: Capture the rook on h4 with your queen.
+  accept:
+  - a4h4
+  why: The queen captures along the rank.
+  hint: Along the fourth rank.

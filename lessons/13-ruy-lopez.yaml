@@ -1,0 +1,26 @@
+id: ruy-lopez
+group: Openings
+title: Ruy Lopez
+steps:
+- type: explain
+  text: 'The Ruy Lopez: 1.e4 e5 2.Nf3 Nc6 3.Bb5. White pressures the knight that defends e5. Play the
+    main line.'
+- type: line
+  color: white
+  moves:
+  - e4
+  - e5
+  - Nf3
+  - Nc6
+  - Bb5
+  - a6
+  - Ba4
+  - Nf6
+  - O-O
+  - Be7
+  whys:
+  - Take the centre.
+  - Develop and attack e5.
+  - Pin the defender of e5.
+  - Keep the bishop pinning the knight.
+  - 'Castle: king to safety, rook to the centre.'

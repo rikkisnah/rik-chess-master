@@ -1,0 +1,26 @@
+id: pawn
+group: Piece basics
+title: The Pawn
+steps:
+- type: explain
+  text: Pawns move straight forward one square. From their starting square they may move two. They capture
+    one square diagonally forward, never straight ahead.
+- type: practice
+  fen: 4k3/8/8/8/8/8/4P3/4K3 w - - 0 1
+  prompt: Move the pawn forward (one or two squares). Do this 3 times.
+  piece: pawn
+  count: 3
+- type: move
+  fen: 4k3/8/8/3p4/8/8/4P3/4K3 w - - 0 1
+  prompt: Advance the e-pawn two squares, as pawns may from their start.
+  accept:
+  - e2e4
+  why: Two squares on the first move - and now it attacks d5.
+  hint: Pawns advance two squares from their start.
+- type: move
+  fen: 4k3/8/8/3p4/4P3/8/8/4K3 w - - 0 1
+  prompt: Capture the pawn on d5 diagonally.
+  accept:
+  - e4d5
+  why: Pawns capture diagonally forward.
+  hint: Capture diagonally.

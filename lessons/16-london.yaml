@@ -1,0 +1,31 @@
+id: london
+group: Openings
+title: London System
+steps:
+- type: explain
+  text: 'The London System: 1.d4 followed by Bf4, e3 and Nf3. It is a solid setup you can play against
+    almost anything.'
+- type: line
+  color: white
+  moves:
+  - d4
+  - d5
+  - Bf4
+  - Nf6
+  - e3
+  - e6
+  - Nf3
+  - Bd6
+  - Bg3
+  - O-O
+  - Bd3
+  - c5
+  - c3
+  whys:
+  - Take the centre.
+  - Develop the bishop outside the pawn chain before playing e3.
+  - Open a diagonal for the other bishop.
+  - Develop the knight.
+  - Offer a trade of bishops - or keep it safe on g3.
+  - Aim the bishop at the kingside.
+  - Support the centre.

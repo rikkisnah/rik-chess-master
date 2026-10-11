@@ -1,0 +1,20 @@
+id: knight
+group: Piece basics
+title: The Knight
+steps:
+- type: explain
+  text: 'The knight moves in an L: two squares one way and one square at right angles. It is the only
+    piece that can jump over others.'
+- type: practice
+  fen: 4k3/8/8/8/3N4/8/8/4K3 w - - 0 1
+  prompt: Move the knight. Do this 3 times.
+  piece: knight
+  count: 3
+- type: move
+  fen: 4k3/8/8/8/8/8/PPPPPPPP/1N2K3 w - - 0 1
+  prompt: Jump the knight over the pawns to c3 (or a3).
+  accept:
+  - b1c3
+  - b1a3
+  why: Knights jump over other pieces.
+  hint: The knight on b1 can go to a3 or c3.

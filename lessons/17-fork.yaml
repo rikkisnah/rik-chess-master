@@ -1,0 +1,42 @@
+id: fork
+group: Tactics
+title: Fork
+steps:
+- type: explain
+  text: A fork is one piece attacking two or more enemy pieces at once. Knights are especially good at
+    it, but any piece (even a pawn) can fork.
+- type: move
+  fen: r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1
+  prompt: White to move. Fork the king and rook.
+  accept:
+  - d5c7
+  why: Nc7+ attacks the king and the rook on a8.
+  hint: A knight fork.
+- type: move
+  fen: 4k3/8/3n1n2/8/4P3/8/8/4K3 w - - 0 1
+  prompt: White to move. Fork two knights with a pawn.
+  accept:
+  - e4e5
+  why: The pawn attacks both knights.
+  hint: Push a pawn.
+- type: move
+  fen: 3q3k/8/8/4N3/8/8/8/4K3 w - - 0 1
+  prompt: White to move. Fork the king and queen.
+  accept:
+  - e5f7
+  why: Nf7+ wins the queen.
+  hint: Look at squares next to the king.
+- type: move
+  fen: r5k1/8/8/8/8/8/8/1K1Q4 w - - 0 1
+  prompt: White to move. Fork the king and rook with the queen.
+  accept:
+  - d1d5
+  why: Qd5+ attacks the king and the rook on a8.
+  hint: A check along the long diagonal.
+- type: move
+  fen: 5k2/2r5/8/8/3N4/8/8/4K3 w - - 0 1
+  prompt: White to move. Fork the king and rook with the knight.
+  accept:
+  - d4e6
+  why: Ne6+ attacks the king on f8 and the rook on c7.
+  hint: A knight check.

@@ -1,0 +1,21 @@
+id: king
+group: Piece basics
+title: The King
+steps:
+- type: explain
+  text: 'The king moves one square in any direction. He may never move into check. Protect him: if he
+    is checkmated, the game is lost.'
+- type: practice
+  fen: 8/8/8/4k3/8/8/8/4K3 w - - 0 1
+  prompt: Move your king one square. Do this 3 times.
+  piece: king
+  count: 3
+- type: move
+  fen: 8/8/8/8/8/3k4/8/4K3 w - - 0 1
+  prompt: Black's king is on d3. Kings may never stand next to each other, so move to a safe square (f1
+    or f2).
+  accept:
+  - e1f2
+  - e1f1
+  why: 'Well done: both squares are out of the black king''s reach.'
+  hint: f1 and f2 are not adjacent to d3.

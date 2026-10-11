@@ -1,0 +1,26 @@
+id: sicilian
+group: Openings
+title: Sicilian Defence
+steps:
+- type: explain
+  text: 'The Sicilian: 1.e4 c5. Black fights for the centre asymmetrically and aims for counterplay on
+    the queenside. You play Black.'
+- type: line
+  color: black
+  moves:
+  - e4
+  - c5
+  - Nf3
+  - d6
+  - d4
+  - cxd4
+  - Nxd4
+  - Nf6
+  - Nc3
+  - a6
+  whys:
+  - Challenge the centre from the side with the c-pawn.
+  - Support e5 and prepare Nf6 and Bg4 ideas.
+  - Trade a wing pawn for White's central pawn.
+  - Attack e4 and develop.
+  - Stop Bb5 and Ndb5 and prepare ...e5 or ...e6 (the Najdorf).

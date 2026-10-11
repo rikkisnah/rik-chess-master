@@ -1,0 +1,14 @@
+id: en-passant
+group: Special rules
+title: En passant
+steps:
+- type: explain
+  text: If a pawn advances two squares and lands beside an enemy pawn, that pawn may capture it as if
+    it had moved just one square. You must do it immediately or lose the right.
+- type: move
+  fen: 4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1
+  prompt: Black just played d7-d5. Capture it en passant.
+  accept:
+  - e5d6
+  why: The pawn lands on d6 and the d5 pawn is removed.
+  hint: Move the e5 pawn diagonally to d6.

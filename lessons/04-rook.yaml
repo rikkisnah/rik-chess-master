@@ -1,0 +1,18 @@
+id: rook
+group: Piece basics
+title: The Rook
+steps:
+- type: explain
+  text: Rooks move any number of squares along a rank or a file.
+- type: practice
+  fen: 4k3/8/8/8/3R4/8/8/4K3 w - - 0 1
+  prompt: Move the rook. Do this 3 times.
+  piece: rook
+  count: 3
+- type: move
+  fen: 4k3/8/8/8/p7/8/8/R3K3 w - - 0 1
+  prompt: Capture the pawn on a4 with the rook.
+  accept:
+  - a1a4
+  why: Rooks capture along files and ranks.
+  hint: Straight up the a-file.

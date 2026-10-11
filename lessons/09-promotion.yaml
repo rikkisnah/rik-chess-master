@@ -1,0 +1,17 @@
+id: promotion
+group: Special rules
+title: Promotion
+steps:
+- type: explain
+  text: A pawn that reaches the far rank must become a queen, rook, bishop or knight. Almost always you
+    will choose a queen.
+- type: move
+  fen: 4k3/P7/8/8/8/8/8/4K3 w - - 0 1
+  prompt: Push the pawn to the last rank and promote it.
+  accept:
+  - a7a8q
+  - a7a8r
+  - a7a8b
+  - a7a8n
+  why: Promoted! Choose a queen in most positions.
+  hint: Move the pawn from a7 to a8.

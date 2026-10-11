@@ -1,0 +1,19 @@
+id: bishop
+group: Piece basics
+title: The Bishop
+steps:
+- type: explain
+  text: Bishops move any number of squares diagonally and stay on the same colour of square for the whole
+    game.
+- type: practice
+  fen: 4k3/8/8/8/3B4/8/8/4K3 w - - 0 1
+  prompt: Move the bishop along a diagonal. Do this 3 times.
+  piece: bishop
+  count: 3
+- type: move
+  fen: 4k3/8/8/6p1/8/8/8/2B1K3 w - - 0 1
+  prompt: Capture the pawn on g5 with the bishop.
+  accept:
+  - c1g5
+  why: The diagonal c1-g5 was open.
+  hint: Look along the diagonal from c1.

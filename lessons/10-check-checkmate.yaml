@@ -1,0 +1,21 @@
+id: check-checkmate
+group: Special rules
+title: Check and checkmate
+steps:
+- type: explain
+  text: 'A king under attack is in check and must escape at once: move, block, or capture the attacker.
+    If there is no escape it is checkmate and the game ends.'
+- type: move
+  fen: 6k1/5ppp/8/8/8/8/8/R3K3 w - - 0 1
+  prompt: Deliver checkmate in one move.
+  accept:
+  - a1a8
+  why: 'Back-rank mate: the pawns trap their own king.'
+  hint: Use the rook on the back rank.
+- type: move
+  fen: 7k/5K2/8/8/8/8/8/6R1 w - - 0 1
+  prompt: Mate again with king and rook.
+  accept:
+  - g1h1
+  why: The rook checks along the h-file while your king covers g8 and g7.
+  hint: The rook can check on the h-file.

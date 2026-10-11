@@ -1,0 +1,14 @@
+id: stalemate
+group: Special rules
+title: Stalemate
+steps:
+- type: explain
+  text: If the side to move has no legal move and is NOT in check, the game is a draw by stalemate. When
+    you are winning, always make sure your opponent still has a move!
+- type: move
+  fen: 7k/8/5K2/6Q1/8/8/8/8 w - - 0 1
+  prompt: Find the move that stalemates Black. (In a real game, this is the blunder to avoid.)
+  accept:
+  - g5g6
+  why: 'Black is not in check yet has no legal move: stalemate, a draw.'
+  hint: The queen can go to g6.

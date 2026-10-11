@@ -1,0 +1,17 @@
+[Event "Rated Blitz game"]
+[Site "https://lichess.org/abcd1234"]
+[Date "2024.03.02"]
+[White "alice"]
+[Black "bob"]
+[Result "1-0"]
+[UTCDate "2024.03.02"]
+[UTCTime "10:00:00"]
+[WhiteElo "1500"]
+[BlackElo "1480"]
+[TimeControl "180+0"]
+[Termination "Normal"]
+[Variant "Standard"]
+[ECO "C20"]
+[Opening "King's Pawn Game"]
+
+1. e4 { [%eval 0.2] [%clk 0:03:00] } 1... e5 { [%eval 0.3] [%clk 0:03:00] } 2. Bc4?! { [%clk 0:02:58] } 2... Nc6 $2 { [%clk 0:02:57] } 3. Qh5 { [%clk 0:02:55] } 3... Nf6?? { [%clk 0:02:50] } 4. Qxf7# { [%clk 0:02:40] } 1-0
