@@ -1,6 +1,10 @@
-.PHONY: setup run test test-fast lint fmt perft relay clean
+.PHONY: stockfish setup run test test-fast lint fmt perft relay clean
 setup:
 	uv sync
+	@command -v stockfish >/dev/null || [ -x /usr/games/stockfish ] || \
+	  echo "Note: Stockfish not found; Master level will fall back to Club. Run: make stockfish"
+stockfish:
+	./scripts/install-stockfish.sh
 run:
 	uv run rcm
 test:

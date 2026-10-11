@@ -11,6 +11,7 @@ import chess
 from rcm.core import Game
 
 LEVELS = ("beginner", "club", "master")
+INSTALL_HINT = "Install it with `make stockfish` (or set RCM_STOCKFISH=/path/to/stockfish)."
 
 
 class Engine(Protocol):
@@ -41,7 +42,7 @@ def make_engine(level: str, seed: int | None = None, depth: int = 3) -> tuple[En
                     f"Stockfish failed to start ({e}); using Club level."
                 )
         return MinimaxEngine(depth=depth, seed=seed), (
-            "Stockfish not found on this machine; using Club level instead."
+            f"Stockfish not found; using Club level instead. {INSTALL_HINT}"
         )
     raise ValueError(f"unknown level {level!r}")
 

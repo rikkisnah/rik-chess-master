@@ -118,6 +118,7 @@ def test_master_falls_back_without_stockfish(monkeypatch):
     monkeypatch.setattr("rcm.engine.uci.find_stockfish", lambda: None)
     eng, notice = make_engine("master", seed=1)
     assert isinstance(eng, MinimaxEngine) and "Stockfish" in notice
+    assert "make stockfish" in notice
     eng, notice = make_engine("beginner")
     assert notice is None
     with pytest.raises(ValueError):

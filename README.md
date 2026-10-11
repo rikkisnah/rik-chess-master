@@ -9,12 +9,18 @@ standard PGN. Runs on macOS and Linux with one command.
 
 ```bash
 make setup   # uv sync: creates .venv and installs dependencies
+make stockfish  # optional: installs Stockfish for the Master level (apt/dnf/pacman/brew)
 make run     # launches the app
 make test    # hermetic: no network, no Stockfish needed
 ```
 
 Requires Python 3.12 with Tkinter (on Debian/Ubuntu: `sudo apt install python3-tk`) and
 [uv](https://docs.astral.sh/uv/).
+
+**Stockfish (Master level).** Without it, Master falls back to Club and the app shows a warning.
+Install with `make stockfish`, or by hand: `sudo apt install stockfish` (Debian/Ubuntu),
+`brew install stockfish` (macOS), or download from <https://stockfishchess.org/download/> and set
+`RCM_STOCKFISH=/path/to/stockfish`.
 
 ## Modes
 
@@ -23,7 +29,7 @@ Requires Python 3.12 with Tkinter (on Debian/Ubuntu: `sudo apt install python3-t
 | Tutorial | 21 guided lessons from `lessons/*.yaml`: piece basics, special rules, 5 openings, 5 tactics themes (5 puzzles each). Progress in `~/.rik-chess-master/progress.json`. |
 | Famous Games | Replay six classics from `games/*.pgn` with auto-play, step, pause and commentary. Drop any PGN into `games/` and it shows up. |
 | Two Player | Local (shared screen, optional auto-flip) or remote through a room-code relay over WebSocket. Offer a draw, resign, request a takeback. |
-| Play vs Machine | Beginner (random, prefers captures), Club (alpha-beta minimax, depth 3), Master (Stockfish via UCI if installed, otherwise falls back to Club with a notice). Hint button included. |
+| Play vs Machine | Beginner (random, prefers captures), Club (alpha-beta minimax, depth 3), Master (Stockfish via UCI; `make stockfish` installs it; otherwise falls back to Club with a warning dialog). Hint button included. |
 
 Games autosave to `~/.rik-chess-master/autosave.pgn` after every move; on startup the app
 offers to resume an unfinished game. Saving never overwrites a file without asking.
@@ -61,6 +67,7 @@ engine and replay all feed moves through the same `Session`/`Game` path.
 | Target | Does |
 | --- | --- |
 | `make setup` | `uv sync` |
+| `make stockfish` | install Stockfish (needs sudo on Linux) |
 | `make run` | launch the app |
 | `make test` | all tests except slow perft (UI tests skip without a display) |
 | `make test-fast` | core tests only (about 1 s) |

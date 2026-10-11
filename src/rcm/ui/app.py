@@ -82,6 +82,8 @@ class App:
         self._swap(PlayFrame(self.root, session, self.show_home))
         if isinstance(session, MachineSession):
             session.start()
+            if session.notice:
+                messagebox.showwarning("Master level unavailable", session.notice, parent=self.root)
 
     def start_local(self) -> None:
         self.start_session(LocalSession(Game()))
