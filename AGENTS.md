@@ -20,3 +20,4 @@ on a timer to drain work posted from engine and network threads. `rcm.ui` must n
 - Tk `event_generate` needs a mapped widget: call `root.update()` after `pack()` in UI tests.
 - Relay default port is 8790 (8765 is used on rik-ai-vm). The relay is deployed at wss://chess.rik-kisnah.ai (see docs/relay.md).
 - Lessons in `lessons/` were generated once and are now hand-editable YAML; `tests/tutorial` validates and solves them.
+- Optional Explain button (`rcm/explain.py`) reads `~/.config/rik-chess-master/anthropic.env` (`RCM_CONFIG_DIR` overrides); never log or print the key. Tests inject a fake sender; the real API is untested without a key.

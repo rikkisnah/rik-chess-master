@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 import queue
+import threading
 from collections.abc import Callable
 from datetime import date
 from pathlib import Path
 
 import chess
 
-from rcm import paths
+from rcm import explain, paths
 from rcm.core import Game, read_file, write_file
 
 
@@ -25,6 +26,8 @@ class Session:
         self.autosave = paths.autosave_path() if autosave is True else (autosave or None)
         self.listeners: list[Callable[[], None]] = []
         self.message = ""
+        self.explaining = False
+        self.explanation: tuple[str, str] | None = None  # (fen it applies to, text)
         self._inbox: queue.Queue[Callable[[], None]] = queue.Queue()
         self.game.headers["RCM_Mode"] = self.mode
 
@@ -101,6 +104,48 @@ class Session:
         self.save_autosave()
         self.notify()
         return True
+
+    # --- explain (optional, needs an Anthropic key) -------------------
+    def request_explain(self, send: explain.Sender | None = None) -> None:
+        if self.explaining:
+            return
+        settings = explain.load_settings()
+        if not settings.enabled:
+            self.message = explain.SETUP_HINT
+            self.notify()
+            return
+        if not self.game.moves:
+            self.message = "Play a move first."
+            self.notify()
+            return
+        game, fen = self.game.copy(), self.game.fen()
+        self.explaining, self.message = True, "Asking Claude..."
+        self.notify()
+
+        def run() -> None:
+            try:
+                text = explain.explain_last_move(game, settings, send or explain._http_send)
+            except explain.ExplainError as e:
+                text, err = "", str(e)
+            except Exception:
+                text, err = "", "Explain failed unexpectedly."
+
+            def done() -> None:
+                self.explaining, self.message = False, "" if text else err
+                if text:
+                    self.explanation = (fen, text)
+                self.notify()
+
+            self.post(done)
+
+        threading.Thread(target=run, daemon=True, name="rcm-explain").start()
+
+    def current_explanation(self) -> str:
+        return (
+            self.explanation[1]
+            if self.explanation and self.explanation[0] == self.game.fen()
+            else ""
+        )
 
     # --- persistence -------------------------------------------------
     def save_autosave(self) -> None:

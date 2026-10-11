@@ -94,6 +94,15 @@ class PlayFrame(ttk.Frame):
         self.note.pack(anchor="w", pady=(0, 6))
         self.moves = MoveList(side)
         self.moves.pack(fill="y", expand=True)
+        self.explain_box = tk.Text(
+            side,
+            width=26,
+            height=7,
+            wrap="word",
+            state="disabled",
+            relief="flat",
+            background="#f4f0e8",
+        )
         self.buttons = ttk.Frame(self)
         self.buttons.grid(row=1, column=1, sticky="sew", padx=(0, 8), pady=8)
         self._build_buttons()
@@ -112,6 +121,7 @@ class PlayFrame(ttk.Frame):
     def _build_buttons(self) -> None:
         s = self.session
         self._btn("Flip board", self.flip, "flip")
+        self._btn("Explain last move", s.request_explain, "explain")
         if isinstance(s, MachineSession):
             self._btn("Hint", s.request_hint, "hint")
             self._btn("Undo move", s.undo, "undo")
@@ -190,11 +200,23 @@ class PlayFrame(ttk.Frame):
         self.note.config(text=" ".join(x for x in (getattr(s, "notice", None), s.message) if x))
         white_first = chess.Board(s.game.start_fen).turn == chess.WHITE
         self.moves.show(s.game.san_moves(), white_first)
+        self._show_explanation(s.current_explanation())
         self._update_buttons()
+
+    def _show_explanation(self, text: str) -> None:
+        if text:
+            self.explain_box.pack(fill="x", pady=(6, 0))
+        else:
+            self.explain_box.pack_forget()
+        self.explain_box.config(state="normal")
+        self.explain_box.delete("1.0", "end")
+        self.explain_box.insert("1.0", text)
+        self.explain_box.config(state="disabled")
 
     def _update_buttons(self) -> None:
         s = self.session
         over = s.game.is_over()
+        self.btn_explain.state(["!disabled" if s.game.moves and not s.explaining else "disabled"])
         if hasattr(self, "btn_hint"):
             self.btn_hint.state(["!disabled" if s.user_can_move() else "disabled"])
         if isinstance(s, RemoteSession):

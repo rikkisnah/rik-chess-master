@@ -162,3 +162,22 @@ def test_offer_resume_loads_autosave(root, tmp_path, monkeypatch):
     root.update()
     assert isinstance(app.frame, PlayFrame)
     assert len(app.frame.session.game.moves) == 1
+
+
+def test_explain_button_state_and_box(root, tmp_path, monkeypatch):
+    monkeypatch.setenv("RCM_CONFIG_DIR", str(tmp_path / "cfg"))
+    s = LocalSession(autosave=False)
+    f = PlayFrame(root, s, lambda: None)
+    f.pack()
+    root.update()
+    assert "disabled" in f.btn_explain.state()  # no moves yet
+    s.move(chess.E2, chess.E4)
+    root.update()
+    assert "disabled" not in f.btn_explain.state()
+    s.explanation = (s.game.fen(), "Takes the centre.")
+    s.notify()
+    root.update()
+    assert f.explain_box.get("1.0", "end").strip() == "Takes the centre."
+    s.move(chess.E7, chess.E5)
+    root.update()
+    assert f.explain_box.get("1.0", "end").strip() == ""

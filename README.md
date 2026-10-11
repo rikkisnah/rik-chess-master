@@ -22,6 +22,20 @@ Install with `make stockfish`, or by hand: `sudo apt install stockfish` (Debian/
 `brew install stockfish` (macOS), or download from <https://stockfishchess.org/download/> and set
 `RCM_STOCKFISH=/path/to/stockfish`.
 
+## Optional: Explain last move (Claude)
+
+The **Explain last move** button asks Claude to describe the last move in plain language.
+Stockfish/Club still pick every move; the position is sent to the Anthropic API only when you
+click. Create `~/.config/rik-chess-master/anthropic.env` (see `docs/anthropic.env.example`):
+
+```
+ANTHROPIC_API_KEY=sk-ant-...
+ANTHROPIC_MODEL=claude-sonnet-5-5
+```
+
+Keep it `chmod 600`. The same variable names in the environment take precedence, and
+`RCM_CONFIG_DIR` moves the folder. Without a key the button shows setup instructions.
+
 ## Modes
 
 | Mode | What it does |
