@@ -18,5 +18,5 @@ on a timer to drain work posted from engine and network threads. `rcm.ui` must n
 
 - Always close `chess.engine.SimpleEngine` (non-daemon thread): an unclosed engine hangs pytest at exit.
 - Tk `event_generate` needs a mapped widget: call `root.update()` after `pack()` in UI tests.
-- Relay default port is 8790 (8765 is used on rik-ai-vm). Deploying the relay is manual; see docs/relay.md.
+- Relay default port is 8790 (8765 is used on rik-ai-vm). The relay is deployed at wss://chess.rik-kisnah.ai (see docs/relay.md).
 - Lessons in `lessons/` were generated once and are now hand-editable YAML; `tests/tutorial` validates and solves them.

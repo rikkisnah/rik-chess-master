@@ -30,16 +30,16 @@ Room codes use 6 characters from a 32-symbol alphabet (about 10^9 codes). Frames
 rejected, at most 500 rooms exist, and an IP gets 10 failed joins per minute. Treat the code as a
 shared secret for a casual game, not as authentication.
 
-## Hosting it on rik-ai-vm (not done yet)
+## Hosted instance
 
-Read `oci-runbooks/runbooks/personal/rik-ai-vms.md` first. Port 8765 is already used by the MCP
-service on that host, so the relay defaults to **8790**. Sketch:
+Deployed 2026-10-11 on rik-ai-vm at `wss://chess.rik-kisnah.ai` (the client default).
 
-1. Install the project (or just `uv run rcm-relay`) and a systemd unit running
-   `rcm-relay --host 127.0.0.1 --port 8790`.
-2. nginx site for e.g. `chess.rik-kisnah.ai` proxying `/` to `127.0.0.1:8790` with
-   `proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection "upgrade";`
-   and a long `proxy_read_timeout`.
-3. DNS plus TLS, then clients use `wss://chess.rik-kisnah.ai`.
+- Code: `/opt/rik-chess-master` (venv in `.venv`); update with `git pull` then
+  `uv pip install --python .venv/bin/python .` and `sudo systemctl restart rcm-relay`.
+- `rcm-relay.service` (DynamicUser) listens on 127.0.0.1:8790. Port 8765 belongs to the MCP service.
+- nginx site `chess.rik-kisnah.ai` proxies with WebSocket upgrade; certbot manages the cert
+  (renews automatically).
+- Cloudflare DNS: A record `chess` -> 129.146.101.64, DNS only (not proxied).
+- Check: `systemctl is-active rcm-relay`; `sudo journalctl -u rcm-relay -n 50`.
 
-Nothing in this repo touches the host; do these steps deliberately.
+Read `oci-runbooks/runbooks/personal/rik-ai-vms.md` before touching the host.

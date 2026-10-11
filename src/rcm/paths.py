@@ -48,7 +48,7 @@ def save_config(cfg: dict) -> None:
     config_path().write_text(json.dumps(cfg, indent=2), encoding="utf-8")
 
 
-DEFAULT_RELAY_URL = "ws://127.0.0.1:8790"
+DEFAULT_RELAY_URL = "wss://chess.rik-kisnah.ai"
 
 
 def relay_url() -> str:
